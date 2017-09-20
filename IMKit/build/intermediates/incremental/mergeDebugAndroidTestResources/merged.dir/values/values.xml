@@ -373,7 +373,7 @@
         <item>.dot</item>
         <item>.docx</item>
     </array>
-    <bool name="rc_enable_mentioned_message">false</bool>
+    <bool name="rc_enable_mentioned_message">true</bool>
     <bool name="rc_enable_message_recall">false</bool>
     <bool name="rc_enable_sync_read_status">false</bool>
     <bool name="rc_extension_history">false</bool>
@@ -381,7 +381,7 @@
     <bool name="rc_play_audio_continuous">true</bool>
     <bool name="rc_read_receipt">false</bool>
     <bool name="rc_stop_custom_service_when_quit">true</bool>
-    <bool name="rc_typing_status">false</bool>
+    <bool name="rc_typing_status">true</bool>
     <color name="rc_ad_file_list_no_select_file_text_state">#9fcdfd</color>
     <color name="rc_ad_file_list_select_file_text_state">#ffffff</color>
     <color name="rc_conversation_list_divider_color">#dfdfdd</color>

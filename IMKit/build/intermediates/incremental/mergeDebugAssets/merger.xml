@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/qinxue/code/Lean/IMKit/src/main/assets"/><source path="/Users/qinxue/code/Lean/IMKit/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/qinxue/code/Lean/IMKit/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/qinxue/Downloads/RongCloudDemo/IMKit/src/main/assets"/><source path="/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/qinxue/Downloads/RongCloudDemo/IMKit/src/debug/assets"/></dataSet></merger>

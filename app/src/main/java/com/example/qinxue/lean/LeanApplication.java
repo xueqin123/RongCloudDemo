@@ -17,5 +17,6 @@ public class LeanApplication extends Application {
     public void onCreate() {
         super.onCreate();
         RongIM.init(this, APP_KEY);
+        RongIM.getInstance().registerConversationTemplate(new MyConversationProvider());
     }
 }

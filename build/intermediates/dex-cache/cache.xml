@@ -3,6 +3,24 @@
 
     <item
         is-multidex="true"
+        jar="/Users/qinxue/Downloads/RongCloudDemo/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/qinxue/Downloads/RongCloudDemo/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_f2935e61c793fe574c9af4c3be6ead3885a804ec/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/default/libs/Rong_IMKit.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="4d1babab6771eccd450bd230ad71231651cb8c03">
+        <dex dex="/Users/qinxue/Downloads/RongCloudDemo/app/build/intermediates/transforms/dex/debug/folders/1000/8/Rong_IMKit_875e555c61cc0b5e3d4e1e6c8668c6c5f7291ce0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/qinxue/code/Lean/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
@@ -18,6 +36,15 @@
         revision="26.0.1"
         sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
         <dex dex="/Users/qinxue/code/Lean/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_baeb1927d510dc450c1f16f53b4823291272317e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/qinxue/Downloads/RongCloudDemo/IMLib/build/intermediates/bundles/default/libs/Rong_IMLib.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6d47d313074f817edcb95a0f5a9fa14597209abd">
+        <dex dex="/Users/qinxue/Downloads/RongCloudDemo/app/build/intermediates/transforms/dex/debug/folders/1000/8/Rong_IMLib_e84945c4dcf510eec6216d7c82994abe465710b2/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -63,6 +90,15 @@
         revision="26.0.1"
         sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
         <dex dex="/Users/qinxue/code/Lean/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5006aa405132840685d7a830504266502ccdcd36/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/qinxue/Downloads/RongCloudDemo/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="07c69e0153f56b74c447fcb7b5922683a0f1f67f">
+        <dex dex="/Users/qinxue/Downloads/RongCloudDemo/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f086e2eaa6ddf237ea7a81d565bfb2f4f19b9279/classes.dex" />
     </item>
     <item
         is-multidex="true"
