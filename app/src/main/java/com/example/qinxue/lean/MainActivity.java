@@ -45,7 +45,12 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
     public static final String USER_TOKEN_4 = "dA8lwpMBVqkZm6JWYILXhq5VbzBm9J5AteeZN+MbeIsewrb07hVFMilkD8X2JnFfz0dfzWdylYaV8GB7+3x38w==";
     //5 user5
     public static final String USER_TOKEN_5 = "LoXZ8ByFhuIpZA1Ue18Guq5VbzBm9J5AteeZN+MbeIsewrb07hVFMjeIKW6WxRpHBzTx66zSZ+2V8GB7+3x38w==";
-    private static final String[] TOKENS = {
+
+    //请不不要使用以下账号，
+    //100 user100
+
+    //101 user101
+    public static final String[] TOKENS = {
             USER_TOKEN_1, USER_TOKEN_2, USER_TOKEN_3, USER_TOKEN_4, USER_TOKEN_5
     };
     public static String CURRENT_USER;
@@ -180,21 +185,22 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
 //        RongIM.getInstance().enableUnreadMessageIcon();
 //        RongIM.getInstance().addToBlacklist();
         //接收消息监听
-        RongIM.setOnReceiveMessageListener(new RongIMClient.OnReceiveMessageListener() {
-            @Override
-            public boolean onReceived(Message message, int i) {
-                Log.i(TAG, "onReceived()");
-                //刷新缓存
-                RongIM.getInstance().refreshUserInfoCache(getUserInfo(message.getUId()));
-                //刷新讨论组缓存
-//                RongIM.getInstance().refreshDiscussionCache();
-//                刷新群组
-//                RongIM.getInstance().refreshGroupInfoCache();
-//                刷新群组成员
-//                     RongIM.getInstance().refreshGroupUserInfoCache();
-                return false;
-            }
-        });
+//        RongIM.setOnReceiveMessageListener(new RongIMClient.OnReceiveMessageListener() {
+//            @Override
+//            public boolean onReceived(Message message, int i) {
+//                Log.i(TAG, "onReceived()");
+//                //刷新缓存
+//                RongIM.getInstance().refreshUserInfoCache(getUserInfo(message.getUId()));
+//
+//                //刷新讨论组缓存
+////                RongIM.getInstance().refreshDiscussionCache();
+////                刷新群组
+////                RongIM.getInstance().refreshGroupInfoCache();
+////                刷新群组成员
+////                     RongIM.getInstance().refreshGroupUserInfoCache();
+//                return false;
+//            }
+//        });
         RongIM.setConnectionStatusListener(new RongIMClient.ConnectionStatusListener() {
             @Override
             public void onChanged(ConnectionStatus connectionStatus) {
@@ -235,8 +241,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
         for (Friend i : userIdList) {
             nickNameList.add(new GroupUserInfo("group1", i.getUserId(), i.getName()));
         }
-
-
     }
 
     @Override

@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.List;
 import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.CSCustomServiceInfo;
 import io.rong.imlib.model.Conversation;
 
 /**
@@ -98,6 +101,12 @@ public class HomeActivity extends BaseActivity {
         menu.add(0, 1, 0, "添加好友");
         menu.add(0, 2, 0, "扫一扫");
         menu.add(0, 3, 0, "含有id为1,2,3的群聊");
+        menu.add(0, 4, 0, "test");
+        menu.add(0, 5, 0, "客服");
+        menu.add(0, 6, 0, "创建聊天室");
+        menu.add(0, 7, 0, "加入聊天室");
+        menu.add(0, 8, 0, "disconnected");
+        menu.add(0, 9, 0, "切换账户到2");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -116,9 +125,57 @@ public class HomeActivity extends BaseActivity {
                         break;
 
                     case 3:
-                        RongIM.getInstance().startGroupChat(HomeActivity.this,"group1","群聊");
+                        RongIM.getInstance().startGroupChat(HomeActivity.this, "group1", "群聊");
 //                        Conversation.ConversationType.GROUP
                         break;
+                    case 4:
+                        Log.i(TAG, "test onClick() ");
+                        break;
+                    case 5:
+                        CSCustomServiceInfo.Builder csBuilder = new CSCustomServiceInfo.Builder();
+                        CSCustomServiceInfo csInfo = csBuilder.nickName("客服").build();
+                        RongIM.getInstance().startCustomerServiceChat(HomeActivity.this, "KEFU150537350421542", "在线客服", csInfo);
+                        break;
+                    case 6:
+                        RongIM.getInstance().startChatRoomChat(HomeActivity.this, "chatRoomId1", true);
+                    case 7:
+                        RongIM.getInstance().joinChatRoom("chatRoomId1", 0, new RongIMClient.OperationCallback() {
+                            @Override
+                            public void onSuccess() {
+                                Log.i(TAG, "onSuccess()");
+                            }
+
+                            @Override
+                            public void onError(RongIMClient.ErrorCode errorCode) {
+                                Log.i(TAG, "onError() errorCode = " + errorCode);
+                            }
+                        });
+                    case 8:
+                        Log.i(TAG, "disconnect()");
+                        RongIM.getInstance().disconnect();
+                    case 9:
+                        RongIM.getInstance().logout();
+                        RongIM.connect(MainActivity.TOKENS[1], new RongIMClient.ConnectCallback() {
+
+
+                            @Override
+                            public void onSuccess(String userId) {
+                                recreate();
+                                Toast.makeText(getApplicationContext(), "connect server success", Toast.LENGTH_SHORT).show();
+                                MainActivity.CURRENT_USER = userId;
+                            }
+
+                            @Override
+                            public void onError(RongIMClient.ErrorCode errorCode) {
+                                Log.e(TAG, "connect failure errorCode is : " + errorCode.getValue());
+                            }
+
+
+                            @Override
+                            public void onTokenIncorrect() {
+                                Log.e(TAG, "token is error ,please check token and appkey");
+                            }
+                        });
                     default:
                         break;
                 }

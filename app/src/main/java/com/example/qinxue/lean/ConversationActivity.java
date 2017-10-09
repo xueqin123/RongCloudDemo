@@ -1,20 +1,25 @@
 package com.example.qinxue.lean;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import io.rong.imkit.RongIM;
 import io.rong.imkit.model.GroupUserInfo;
@@ -37,6 +42,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
         mName = getmTitle();
@@ -54,6 +60,9 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         RongIMClient.getInstance().setTypingStatusListener(typingStatusListener);
 
     }
+
+    private ListView listView;
+
 
     RongIMClient.TypingStatusListener typingStatusListener = new RongIMClient.TypingStatusListener() {
 
@@ -132,28 +141,44 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         menu.add(0, 1, 0, "加入成员");
         menu.add(0, 2, 0, "退出该组");
         menu.add(0, 3, 0, "解散该组");
+        menu.add(0, 4, 0, "清空当前会话");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Log.i(TAG, "item.getItemId() = " + item.getItemId() + "mMemberList.size() = " + mMemberList.size());
-                if (mMemberList.size() > 0) {
-                    Intent intent = new Intent(ConversationActivity.this, SelectActivity.class);
-                    intent.putStringArrayListExtra("group_members", mMemberList);
-                    switch (item.getItemId()) {
-                        case 0:
-                            intent.setAction("action_remove");
-                            startActivityForResult(intent, REMOVE_REQUEST);
-                            break;
-                        case 1:
-                            intent.setAction("action_add");
-                            startActivityForResult(intent, ADD_REQUEST);
-                            break;
-                        case 2:
+//                if (mMemberList.size() > 0) {
+                Intent intent = new Intent(ConversationActivity.this, SelectActivity.class);
+                intent.putStringArrayListExtra("group_members", mMemberList);
+                switch (item.getItemId()) {
+                    case 0:
+                        intent.setAction("action_remove");
+                        startActivityForResult(intent, REMOVE_REQUEST);
+                        break;
+                    case 1:
+                        intent.setAction("action_add");
+                        startActivityForResult(intent, ADD_REQUEST);
+                        break;
+                    case 2:
 
-                            break;
-                    }
+                        break;
+                    case 4:
+                        Log.i(TAG, "清空当前会话");
+                        RongIM.getInstance().clearMessages(Conversation.ConversationType.PRIVATE, mCurrentId, new RongIMClient.ResultCallback<Boolean>() {
+                            @Override
+                            public void onSuccess(Boolean aBoolean) {
+                                Log.i(TAG, "onSuccess()");
+                            }
+
+                            @Override
+                            public void onError(RongIMClient.ErrorCode errorCode) {
+                                Log.i(TAG, "onError");
+
+                            }
+                        });
+                        break;
                 }
+//                }
 
                 return false;
             }
@@ -180,7 +205,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         if (data != null) {
             list = data.getStringArrayListExtra("selected_list");
         }
-        if (list.size() != 0) {
+        if (list != null && list.size() != 0) {
             Log.i(TAG, "list.size() = " + list.size());
             switch (requestCode) {
                 case REMOVE_REQUEST:
