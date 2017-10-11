@@ -20,6 +20,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 import io.rong.imkit.RongIM;
 import io.rong.imkit.model.GroupUserInfo;
@@ -27,7 +28,10 @@ import io.rong.imlib.RongIMClient;
 import io.rong.imlib.TypingMessage.TypingStatus;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.Discussion;
+import io.rong.imlib.model.Message;
+import io.rong.imlib.model.MessageContent;
 import io.rong.imlib.model.UserInfo;
+import io.rong.message.TextMessage;
 
 public class ConversationActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "ConversationActivity";
@@ -36,6 +40,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
     private String nCurrentName;
     private EditText mEditText;
     private Button mButton;
+    private Conversation.ConversationType mConversationType;
     private ArrayList<String> mMemberList = new ArrayList<>();
     private static final int REMOVE_REQUEST = 0;
     private static final int ADD_REQUEST = 1;
@@ -47,6 +52,9 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_conversation);
         mName = getmTitle();
         getmOk().setText("more");
+        String typeStr = getIntent().getData().getLastPathSegment().toUpperCase(Locale.US);
+        mConversationType = Conversation.ConversationType.valueOf(typeStr);
+        Log.i(TAG, "mConversationType.getValue() = " + mConversationType.getValue());
         mCurrentId = getIntent().getData().getQueryParameter("targetId"); //targetId:单聊即对方ID，群聊即群组ID
         String sName = getIntent().getData().getQueryParameter("title"); //获取昵称
         nCurrentName = sName;
@@ -142,6 +150,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         menu.add(0, 2, 0, "退出该组");
         menu.add(0, 3, 0, "解散该组");
         menu.add(0, 4, 0, "清空当前会话");
+        menu.add(0, 5, 0, "插入消息");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -176,6 +185,14 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
 
                             }
                         });
+                        break;
+                    case 5:
+                        Log.i(TAG, "插入消息");
+                        Message.ReceivedStatus status = new Message.ReceivedStatus(1);
+                        status.setRead();
+                        TextMessage message = TextMessage.obtain("oooooooo");
+                        RongIM.getInstance().insertIncomingMessage(mConversationType, mCurrentId, mCurrentId, status, message, System.currentTimeMillis(), null);
+
                         break;
                 }
 //                }
