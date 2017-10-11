@@ -17,6 +17,8 @@ public class LeanApplication extends MultiDexApplication {
     private static final String TAG = "LeanApplication";
 
     public static final String APP_KEY = "sfci50a7s4q5i";
+//    public static final String APP_KEY = "x18ywvqfxn3nc";
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -27,7 +29,7 @@ public class LeanApplication extends MultiDexApplication {
             @Override
             public boolean onReceived(Message message, int i) {
                 Log.i(TAG, "onReceived()");
-                Log.i(TAG,"onReceived() message.getContent().getClass().getSimpleName() ="+message.getContent().getClass().getSimpleName());
+                Log.i(TAG, "onReceived() message.getContent().getClass().getSimpleName() =" + message.getContent().getClass().getSimpleName());
                 //刷新缓存
 //                RongIM.getInstance().refreshUserInfoCache(getUserInfo(message.getUId()));
 

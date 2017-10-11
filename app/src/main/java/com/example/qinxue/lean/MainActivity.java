@@ -20,6 +20,7 @@ import io.rong.imkit.RongIM;
 import io.rong.imkit.model.GroupUserInfo;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
+import io.rong.imlib.model.Group;
 import io.rong.imlib.model.Message;
 import io.rong.imlib.model.PublicServiceProfile;
 import io.rong.imlib.model.UserInfo;
@@ -28,7 +29,7 @@ import io.rong.imlib.model.UserInfo;
  * Created by qinxue on 2017/8/30.
  */
 
-public class MainActivity extends Activity implements View.OnClickListener, RongIM.UserInfoProvider {
+public class MainActivity extends Activity implements View.OnClickListener, RongIM.UserInfoProvider, RongIM.GroupInfoProvider {
     public static List<Friend> userIdList;
     public static List<GroupUserInfo> nickNameList = new ArrayList<>();
     private static final String TAG = "MainActivity";
@@ -46,6 +47,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
     //5 user5
     public static final String USER_TOKEN_5 = "LoXZ8ByFhuIpZA1Ue18Guq5VbzBm9J5AteeZN+MbeIsewrb07hVFMjeIKW6WxRpHBzTx66zSZ+2V8GB7+3x38w==";
 
+    public static final String TEST_200016 = "TUxMK3lXOFF3Q0UrTzhJTWVIUkh1ZWErYTBuU2g3Q216bmlvSGZTb1gvY3Bob2R1b0J0M2VmT3JXLzB1TFZmSg";
+    public static final String TEST_200017 = "dXFhbU9tVnBZVW5FYlA2Ly9pUXhrQ2JIbG5EQkJvenFmRThyeFZCT2U5eGtRbXdtN2hwUExqMW9Vb05jYVhZZg";
     //请不不要使用以下账号，
     //100 user100
 
@@ -69,13 +72,23 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
 
     @Override
     public void onClick(View v) {
+
+
         Integer token = Integer.valueOf(mEditText.getText().toString());
+
+//        if (token == 200016) {
+//            connectRongServer(TEST_200016);
+//        } else if (token == 200017) {
+//            connectRongServer(TEST_200017);
+//        }
+
         connectRongServer(TOKENS[token - 1]);
     }
 
 
     private void connectRongServer(String token) {
-
+        Log.i(TAG, "appKey = " + LeanApplication.APP_KEY);
+        Log.i(TAG, "connectRongServer() = " + token);
         RongIM.getInstance().setGroupUserInfoProvider(new RongIM.GroupUserInfoProvider() {
             @Override
             public GroupUserInfo getGroupUserInfo(String groupId, String userId) {
@@ -226,6 +239,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
                 return false;
             }
         });
+        RongIM.getInstance().setGroupInfoProvider(this, true);
 
 
     }
@@ -237,6 +251,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
         userIdList.add(new Friend("3", "user3", "http://dynamic-image.yesky.com/600x-/uploadImages/upload/20141120/ai4gjet4l4tjpg.jpg"));
         userIdList.add(new Friend("4", "user4", "http://img1.imgtn.bdimg.com/it/u=1891993688,2072816047&fm=214&gp=0.jpg"));
         userIdList.add(new Friend("5", "user5", "http://img.duoziwang.com/2016/11/27/133942164161.jpg"));
+
+
         RongIM.setUserInfoProvider(this, true);
         for (Friend i : userIdList) {
             nickNameList.add(new GroupUserInfo("group1", i.getUserId(), i.getName()));
@@ -256,4 +272,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
     }
 
 
+    @Override
+    public Group getGroupInfo(String s) {
+        String name = "群聊1";
+        return new Group("group1", name, Uri.parse("http://img1.imgtn.bdimg.com/it/u=1891993688,2072816047&fm=214&gp=0.jpg"));
+    }
 }

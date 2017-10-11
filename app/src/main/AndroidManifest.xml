@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    package="com.example.qinxue.lean">
+    package="com.example.qinxue.lean">·
 
     <application
         android:name=".LeanApplication"
@@ -55,6 +55,17 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.qinxue.lean.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/rc_file_path" />
+        </provider>
+
     </application>
 
 </manifest>

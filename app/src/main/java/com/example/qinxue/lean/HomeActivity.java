@@ -71,7 +71,7 @@ public class HomeActivity extends BaseActivity {
          * appendQueryParameter对具体的会话列表做展示
          */
         if (mConversationFragment == null) {
-            ConversationListFragment listFragment = new ConversationListFragment();
+            ConversationListFragment listFragment = new MyConversationListFragment();
             Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
                     .appendPath("conversationList")
                     .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "false")//设置私聊会话是否聚合显示
@@ -125,7 +125,7 @@ public class HomeActivity extends BaseActivity {
                         break;
 
                     case 3:
-                        RongIM.getInstance().startGroupChat(HomeActivity.this, "group1", "群聊");
+                        RongIM.getInstance().startGroupChat(HomeActivity.this, "group2", "群聊2");
 //                        Conversation.ConversationType.GROUP
                         break;
                     case 4:
