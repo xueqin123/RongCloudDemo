@@ -125,7 +125,7 @@ public class HomeActivity extends BaseActivity {
                         break;
 
                     case 3:
-                        RongIM.getInstance().startGroupChat(HomeActivity.this, "group2", "群聊2");
+                        RongIM.getInstance().startGroupChat(HomeActivity.this, "group1", "群聊1");
 //                        Conversation.ConversationType.GROUP
                         break;
                     case 4:

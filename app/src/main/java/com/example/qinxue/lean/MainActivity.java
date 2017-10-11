@@ -310,7 +310,14 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
 
     @Override
     public Group getGroupInfo(String s) {
-        String name = "群聊1";
-        return new Group("group1", name, Uri.parse("http://img1.imgtn.bdimg.com/it/u=1891993688,2072816047&fm=214&gp=0.jpg"));
+        Log.i(TAG, "s = " + s);
+        Group group = null;
+        switch (s) {
+            case "group1":
+                group = new Group("group1", "群聊1", Uri.parse("http://img1.imgtn.bdimg.com/it/u=1891993688,2072816047&fm=214&gp=0.jpg"));
+                break;
+        }
+
+        return group;
     }
 }
