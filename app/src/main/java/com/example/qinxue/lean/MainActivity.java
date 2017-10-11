@@ -18,6 +18,7 @@ import java.util.List;
 
 import io.rong.imkit.RongIM;
 import io.rong.imkit.model.GroupUserInfo;
+import io.rong.imlib.MessageTag;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.Group;
@@ -143,6 +144,41 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
                 Log.e(TAG, "token is error ,please check token and appkey");
             }
         });
+
+
+        RongIM.setOnReceiveMessageListener(new RongIMClient.OnReceiveMessageListener() {
+            @Override
+            public boolean onReceived(Message message, int i) {
+                Log.i(TAG, "onReceived()");
+                Log.i(TAG, "onReceived() message.getContent().getClass().getSimpleName() =" + message.getContent().getClass().getSimpleName());
+                MessageTag tag = CustomMessage.class.getAnnotation(MessageTag.class);
+                Log.i(TAG, "tag.value() = " + tag.value());
+                Log.i(TAG, "message.getObjectName() = " + message.getObjectName());
+                if (message.getObjectName().equals(tag.value())) {
+                    final CustomMessage msg = (CustomMessage) message.getContent();
+                    Log.i(TAG, "msg = " + msg.getString());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MainActivity.this.getApplicationContext(), msg.getString(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }
+
+                //刷新缓存
+//                RongIM.getInstance().refreshUserInfoCache(getUserInfo(message.getUId()));
+
+                //刷新讨论组缓存
+//                RongIM.getInstance().refreshDiscussionCache();
+//                刷新群组
+//                RongIM.getInstance().refreshGroupInfoCache();
+//                刷新群组成员
+//                     RongIM.getInstance().refreshGroupUserInfoCache();
+                return false;
+            }
+        });
+
         //设置消息点击监听
         RongIM.getInstance().setConversationBehaviorListener(new RongIM.ConversationBehaviorListener() {
 

@@ -151,6 +151,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         menu.add(0, 3, 0, "解散该组");
         menu.add(0, 4, 0, "清空当前会话");
         menu.add(0, 5, 0, "插入消息");
+        menu.add(0, 6, 0, "发送自定义消息");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -193,6 +194,21 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                         TextMessage message = TextMessage.obtain("oooooooo");
                         RongIM.getInstance().insertIncomingMessage(mConversationType, mCurrentId, mCurrentId, status, message, System.currentTimeMillis(), null);
 
+                        break;
+                    case 6:
+                        Log.i(TAG, "发送自定义消息");
+                        CustomMessage customMessage = new CustomMessage("自定义的消息");
+                        RongIM.getInstance().sendMessage(mConversationType, mCurrentId, customMessage, null, null, new RongIMClient.SendMessageCallback() {
+                            @Override
+                            public void onSuccess(Integer integer) {
+                                Log.i(TAG, "onSuccess()");
+                            }
+
+                            @Override
+                            public void onError(Integer integer, RongIMClient.ErrorCode errorCode) {
+                                Log.i(TAG, "onError()");
+                            }
+                        });
                         break;
                 }
 //                }
