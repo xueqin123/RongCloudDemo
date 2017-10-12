@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -44,6 +45,8 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
     private ArrayList<String> mMemberList = new ArrayList<>();
     private static final int REMOVE_REQUEST = 0;
     private static final int ADD_REQUEST = 1;
+    private android.app.Fragment mFragment;
+    private View mFragmentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         mButton.setOnClickListener(this);
         RongIMClient.getInstance().getDiscussion(mCurrentId, mCallBack);
         RongIMClient.getInstance().setTypingStatusListener(typingStatusListener);
-
+        mFragment = getFragmentManager().findFragmentById(R.id.conversation);
     }
 
     private ListView listView;
@@ -152,6 +155,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         menu.add(0, 4, 0, "清空当前会话");
         menu.add(0, 5, 0, "插入消息");
         menu.add(0, 6, 0, "发送自定义消息");
+        menu.add(0, 7, 0, "获取历史记录");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -191,7 +195,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                         Log.i(TAG, "插入消息");
                         Message.ReceivedStatus status = new Message.ReceivedStatus(1);
                         status.setRead();
-                        TextMessage message = TextMessage.obtain("oooooooo");
+                        final TextMessage message = TextMessage.obtain("oooooooo");
                         RongIM.getInstance().insertIncomingMessage(mConversationType, mCurrentId, mCurrentId, status, message, System.currentTimeMillis(), null);
 
                         break;
@@ -209,6 +213,26 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                                 Log.i(TAG, "onError()");
                             }
                         });
+                        break;
+                    case 7:
+                    case 10:
+                        RongIM.getInstance().getRemoteHistoryMessages(mConversationType, mCurrentId, 0, 20, new RongIMClient.ResultCallback<List<Message>>() {
+
+                            @Override
+                            public void onSuccess(List<Message> messages) {
+                                Log.i(TAG, "onSuccess() messages = " + messages);
+                                if (messages != null) {
+                                    Log.i(TAG, "messages.size() = " + messages.size());
+
+                                }
+                            }
+
+                            @Override
+                            public void onError(RongIMClient.ErrorCode errorCode) {
+                                Log.i(TAG, "onError() errorCode = " + errorCode);
+                            }
+                        });
+
                         break;
                 }
 //                }

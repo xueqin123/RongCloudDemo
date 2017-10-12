@@ -48,8 +48,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
     //5 user5
     public static final String USER_TOKEN_5 = "LoXZ8ByFhuIpZA1Ue18Guq5VbzBm9J5AteeZN+MbeIsewrb07hVFMjeIKW6WxRpHBzTx66zSZ+2V8GB7+3x38w==";
 
-    public static final String TEST_200016 = "TUxMK3lXOFF3Q0UrTzhJTWVIUkh1ZWErYTBuU2g3Q216bmlvSGZTb1gvY3Bob2R1b0J0M2VmT3JXLzB1TFZmSg";
-    public static final String TEST_200017 = "dXFhbU9tVnBZVW5FYlA2Ly9pUXhrQ2JIbG5EQkJvenFmRThyeFZCT2U5eGtRbXdtN2hwUExqMW9Vb05jYVhZZg";
+    public static final String TEST_200017 = "P/cMWUESE3m1ITlUTjTAJOvQf5Tgu6Xhw1Wyn2au7557UsdnmitctfaAehdvkc6xg5Jx441Pd+hjTLIOPrt/Uw==";
+    public static final String TEST_200016 = "IlA8vjagiQ6I2MbkTVVtsOvQf5Tgu6Xhw1Wyn2au7557UsdnmitctZaMubntVMiOAJUiJP0VDpbWvbKnAihq0A==";
     //请不不要使用以下账号，
     //100 user100
 
@@ -74,16 +74,23 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
     @Override
     public void onClick(View v) {
 
-
         Integer token = Integer.valueOf(mEditText.getText().toString());
+        switch (LeanApplication.APP_KEY) {
+            case "x18ywvqfxn3nc":
 
-//        if (token == 200016) {
-//            connectRongServer(TEST_200016);
-//        } else if (token == 200017) {
-//            connectRongServer(TEST_200017);
-//        }
+                if (token == 200016) {
+                    connectRongServer(TEST_200016);
+                } else if (token == 200017) {
+                    connectRongServer(TEST_200017);
+                }
+                break;
+            case "sfci50a7s4q5i":
 
-        connectRongServer(TOKENS[token - 1]);
+                connectRongServer(TOKENS[token - 1]);
+                break;
+        }
+
+
     }
 
 
@@ -287,8 +294,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
         userIdList.add(new Friend("3", "user3", "http://dynamic-image.yesky.com/600x-/uploadImages/upload/20141120/ai4gjet4l4tjpg.jpg"));
         userIdList.add(new Friend("4", "user4", "http://img1.imgtn.bdimg.com/it/u=1891993688,2072816047&fm=214&gp=0.jpg"));
         userIdList.add(new Friend("5", "user5", "http://img.duoziwang.com/2016/11/27/133942164161.jpg"));
-
-
+        userIdList.add(new Friend("200016", "user200016", "http://img.duoziwang.com/2016/11/27/133942164161.jpg"));
+        userIdList.add(new Friend("200017", "user200017", "http://img.duoziwang.com/2016/11/27/133942164161.jpg"));
         RongIM.setUserInfoProvider(this, true);
         for (Friend i : userIdList) {
             nickNameList.add(new GroupUserInfo("group1", i.getUserId(), i.getName()));
