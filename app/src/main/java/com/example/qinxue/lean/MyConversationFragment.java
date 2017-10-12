@@ -36,6 +36,7 @@ public class MyConversationFragment extends ConversationFragment {
 
     @Override
     public MessageListAdapter onResolveAdapter(Context context) {
-        return super.onResolveAdapter(context);
+        return new MyMessageListAdapter(context);
     }
+
 }
