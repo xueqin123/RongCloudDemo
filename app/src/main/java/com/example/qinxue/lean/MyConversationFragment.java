@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -19,7 +20,7 @@ import io.rong.imkit.widget.adapter.MessageListAdapter;
 
 public class MyConversationFragment extends ConversationFragment {
     private ListView listView;
-    //    private RongExtension mRongExtension;
+        private RongExtension mRongExtension;
     private TextView mTextView;
 
     @Override
@@ -27,7 +28,8 @@ public class MyConversationFragment extends ConversationFragment {
 
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
-//        mRongExtension = (RongExtension) v.findViewById(io.rong.imkit.R.id.rc_extension);
+        mRongExtension = (RongExtension) v.findViewById(io.rong.imkit.R.id.rc_extension);
+
 //
 //        mTextView = mRongExtension.getInputEditText();
 //        mTextView.setHint("请输入");
@@ -38,6 +40,8 @@ public class MyConversationFragment extends ConversationFragment {
 //        headView.setTextColor(Color.BLACK);
 //        headView.setTextSize(100);
 //        listView.addHeaderView(headView);
+
+
         return v;
 
     }
@@ -54,4 +58,8 @@ public class MyConversationFragment extends ConversationFragment {
         return new MyMessageListAdapter(context);
     }
 
+    @Override
+    public void onVoiceInputToggleTouch(View v, MotionEvent event) {
+        super.onVoiceInputToggleTouch(v, event);
+    }
 }

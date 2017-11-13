@@ -25,6 +25,7 @@ import io.rong.imlib.model.Group;
 import io.rong.imlib.model.Message;
 import io.rong.imlib.model.PublicServiceProfile;
 import io.rong.imlib.model.UserInfo;
+import io.rong.message.TextMessage;
 
 /**
  * Created by qinxue on 2017/8/30.
@@ -156,12 +157,15 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
         RongIM.setOnReceiveMessageListener(new RongIMClient.OnReceiveMessageListener() {
             @Override
             public boolean onReceived(Message message, int i) {
+
                 Log.i(TAG, "onReceived()");
                 Log.i(TAG, "onReceived() message.getContent().getClass().getSimpleName() =" + message.getContent().getClass().getSimpleName());
                 MessageTag tag = CustomMessage.class.getAnnotation(MessageTag.class);
+                MessageTag tag1 = TextMessage.class.getAnnotation(MessageTag.class);
                 Log.i(TAG, "tag.value() = " + tag.value());
                 Log.i(TAG, "message.getObjectName() = " + message.getObjectName());
                 if (message.getObjectName().equals(tag.value())) {
+                    Log.i(TAG, "CustomMessage receive");
                     final CustomMessage msg = (CustomMessage) message.getContent();
                     Log.i(TAG, "msg = " + msg.getString());
                     runOnUiThread(new Runnable() {
@@ -171,7 +175,13 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
                         }
                     });
 
+                } else if (message.getObjectName().equals(tag1.value())) {
+                    Log.i(TAG, "Textmessaget receive");
+
+                    TextMessage message1 = (TextMessage) message.getContent();
+                    Log.i(TAG, "message1.getExtra()) = " + message1.getExtra());
                 }
+
 
                 //刷新缓存
 //                RongIM.getInstance().refreshUserInfoCache(getUserInfo(message.getUId()));

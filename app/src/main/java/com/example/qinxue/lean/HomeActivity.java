@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,6 +108,7 @@ public class HomeActivity extends BaseActivity {
         menu.add(0, 7, 0, "加入聊天室");
         menu.add(0, 8, 0, "disconnected");
         menu.add(0, 9, 0, "切换账户到2");
+        menu.add(0, 10, 0, "测试Java代理");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -138,6 +140,7 @@ public class HomeActivity extends BaseActivity {
                         break;
                     case 6:
                         RongIM.getInstance().startChatRoomChat(HomeActivity.this, "chatRoomId1", true);
+                        break;
                     case 7:
                         RongIM.getInstance().joinChatRoom("chatRoomId1", 0, new RongIMClient.OperationCallback() {
                             @Override
@@ -150,9 +153,11 @@ public class HomeActivity extends BaseActivity {
                                 Log.i(TAG, "onError() errorCode = " + errorCode);
                             }
                         });
+                        break;
                     case 8:
                         Log.i(TAG, "disconnect()");
                         RongIM.getInstance().disconnect();
+                        break;
                     case 9:
                         RongIM.getInstance().logout();
                         RongIM.connect(MainActivity.TOKENS[1], new RongIMClient.ConnectCallback() {
@@ -176,12 +181,27 @@ public class HomeActivity extends BaseActivity {
                                 Log.e(TAG, "token is error ,please check token and appkey");
                             }
                         });
+                        break;
+                    case 10:
+                        testProxy();
+                        break;
                     default:
                         break;
                 }
                 return false;
             }
         });
+    }
+
+
+    private void testProxy() {
+        ProxyTest.RealSubject real = new ProxyTest.RealSubject(); //
+        //参数 （类加载器，type，invokhandler接口)
+        ProxyTest.Subject proxySubject = (ProxyTest.Subject) Proxy.newProxyInstance(ProxyTest.Subject.class.getClassLoader(),
+                new Class[]{ProxyTest.Subject.class},
+                new ProxyTest.ProxyHandler(real));
+
+        proxySubject.doSomething();
     }
 
     @Override

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RongDemo</string>
+    <string name="file_not_exist">"文件不存在"</string>
 </resources>

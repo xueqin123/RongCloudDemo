@@ -12,19 +12,29 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
+import io.rong.imkit.DefaultExtensionModule;
+import io.rong.imkit.IExtensionModule;
+import io.rong.imkit.RongExtensionManager;
 import io.rong.imkit.RongIM;
 import io.rong.imkit.model.GroupUserInfo;
+import io.rong.imkit.plugin.DefaultLocationPlugin;
+import io.rong.imkit.plugin.IPluginModule;
+import io.rong.imkit.widget.provider.FilePlugin;
+import io.rong.imlib.IRongCallback;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.TypingMessage.TypingStatus;
 import io.rong.imlib.model.Conversation;
@@ -32,6 +42,7 @@ import io.rong.imlib.model.Discussion;
 import io.rong.imlib.model.Message;
 import io.rong.imlib.model.MessageContent;
 import io.rong.imlib.model.UserInfo;
+import io.rong.message.FileMessage;
 import io.rong.message.TextMessage;
 
 public class ConversationActivity extends BaseActivity implements View.OnClickListener {
@@ -156,6 +167,9 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         menu.add(0, 5, 0, "插入消息");
         menu.add(0, 6, 0, "发送自定义消息");
         menu.add(0, 7, 0, "获取历史记录");
+        menu.add(0, 8, 0, "发送外信息");
+        menu.add(0, 9, 0, "发送媒体消息");
+        menu.add(0, 10, 0, "获取最近消息");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -215,7 +229,6 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                         });
                         break;
                     case 7:
-                    case 10:
                         RongIM.getInstance().getRemoteHistoryMessages(mConversationType, mCurrentId, 0, 20, new RongIMClient.ResultCallback<List<Message>>() {
 
                             @Override
@@ -233,6 +246,80 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                             }
                         });
 
+                        break;
+                    case 8:
+                        TextMessage message1 = TextMessage.obtain("extraMessage");
+                        message1.setExtra("this is extra");
+                        RongIM.getInstance().sendMessage(mConversationType, mCurrentId, message1, null, null, new RongIMClient.SendMessageCallback() {
+                            @Override
+                            public void onSuccess(Integer integer) {
+                                Log.i(TAG, "onSuccess()");
+                            }
+
+                            @Override
+                            public void onError(Integer integer, RongIMClient.ErrorCode errorCode) {
+                                Log.i(TAG, "onError()");
+                            }
+                        });
+                        break;
+
+                    case 9:
+
+                        File file = new File("/storage/emulated/0/1/sina/VID_20171025_102846.mp4");
+                        if (file.exists()) {
+                            Log.i(TAG, "Uri fromFile = " + Uri.fromFile(file));
+
+                        } else {
+                            Toast.makeText(ConversationActivity.this, R.string.file_not_exist, Toast.LENGTH_SHORT).show();
+                        }
+
+                        VideoMessage videoMessage = VideoMessage.obtain(Uri.fromFile(file), 5000);
+//                        FileMessage fileMessage = FileMessage.obtain(Uri.fromFile(file));
+                        Message message3 = Message.obtain(mCurrentId, mConversationType, videoMessage);
+                        RongIMClient.getInstance().sendMediaMessage(message3, null, null, new IRongCallback.ISendMediaMessageCallback() {
+                                    @Override
+                                    public void onProgress(Message message, int i) {
+                                        Log.i(TAG, "onProgress() i = " + i);
+                                    }
+
+                                    @Override
+                                    public void onCanceled(Message message) {
+                                        Log.i(TAG, "onCanceled()");
+                                    }
+
+                                    @Override
+                                    public void onAttached(Message message) {
+                                        Log.i(TAG, "onAttached()");
+                                    }
+
+                                    @Override
+                                    public void onSuccess(Message message) {
+                                        Log.i(TAG, "onSuccess()");
+                                    }
+
+                                    @Override
+                                    public void onError(Message message, RongIMClient.ErrorCode errorCode) {
+                                        Log.i(TAG, "onError() errorCode = " + errorCode);
+                                    }
+                                }
+                        );
+//                        Log.i(TAG, "file.exists() = " + file.exists());
+//                        VideoMessage message2 = VideoMessage.obtain()
+                        break;
+                    case 10:
+                        RongIM.getInstance().getLatestMessages(mConversationType, mCurrentId, 10, new RongIMClient.ResultCallback<List<Message>>() {
+                            @Override
+                            public void onSuccess(List<Message> messages) {
+                                Log.i(TAG, "messages.size() = " + messages.size());
+                            }
+
+                            @Override
+                            public void onError(RongIMClient.ErrorCode errorCode) {
+
+                            }
+                        });
+                        break;
+                    default:
                         break;
                 }
 //                }

@@ -20,6 +20,9 @@ public class DemoReceiver extends PushMessageReceiver {
         Log.i(TAG, "onNotificationMessageArrived()");
 //        Log.i(TAG, "onNotificationMessageArrived() getPushData = " + pushNotificationMessage.getPushData());
 //        Log.i(TAG, "onNotificationMessageArrived() getExtra  = " + pushNotificationMessage.getExtra());
+
+        Log.i(TAG, "pushNotificationMessage.getExtra() = " + pushNotificationMessage.getExtra());
+        Log.i(TAG, "pushNotificationMessage.getPushContent() = " + pushNotificationMessage.getPushContent());
         return false;
     }
 

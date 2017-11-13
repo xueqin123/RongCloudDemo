@@ -2,6 +2,7 @@ package com.example.qinxue.lean;
 
 import android.content.Context;
 
+import io.rong.imkit.model.UIMessage;
 import io.rong.imkit.widget.adapter.MessageListAdapter;
 
 /**
@@ -11,5 +12,13 @@ import io.rong.imkit.widget.adapter.MessageListAdapter;
 public class MyMessageListAdapter extends MessageListAdapter {
     public MyMessageListAdapter(Context context) {
         super(context);
+    }
+
+    @Override
+    public void add(UIMessage uiMessage) {
+
+
+        super.add(uiMessage);
+
     }
 }
