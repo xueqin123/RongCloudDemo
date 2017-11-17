@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,7 +21,7 @@ import io.rong.imkit.widget.adapter.MessageListAdapter;
 
 public class MyConversationFragment extends ConversationFragment {
     private ListView listView;
-        private RongExtension mRongExtension;
+    private RongExtension mRongExtension;
     private TextView mTextView;
 
     @Override
@@ -29,8 +30,10 @@ public class MyConversationFragment extends ConversationFragment {
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
         mRongExtension = (RongExtension) v.findViewById(io.rong.imkit.R.id.rc_extension);
+//        ImageView emoticon = (ImageView) mRongExtension.findViewById(R.id.rc_emoticon_toggle);
+//        emoticon.setVisibility(View.GONE);
 
-//
+
 //        mTextView = mRongExtension.getInputEditText();
 //        mTextView.setHint("请输入");
 

@@ -32,12 +32,13 @@ dependencies {
     //    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     //    compile project(':IMLib')
-    compile project(':IMKit')
-    //    compile project(':CallLib')
+    //    compile project(':IMCallKit')
+//    compile project(':IMKit')
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:multidex:1.0.0'
     compile files('src/main/libs/AMap_2DMap_V2.9.0_20160525.jar')
     compile files('src/main/libs/AMap_Channel_Location_V1.4.0_20160708.jar')
     compile files('src/main/libs/AMap_Search_V3.4.0_20160811.jar')
     compile files('src/main/libs/MiPush_SDK_Client_3_2_2.jar')
+    implementation project(':CallKit')
 }

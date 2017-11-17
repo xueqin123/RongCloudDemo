@@ -34,7 +34,7 @@ public class HomeActivity extends BaseActivity {
     private ViewPager mViewPager;
     private FragmentPagerAdapter mFragmentPagerAdapter;//将tab页面持久在内存中
     private Fragment mConversationList;
-    private Fragment mConversationFragment = null;
+//    private Fragment mConversationFragment = null;
     private List<Fragment> mFragments = new ArrayList<>();
     private static final int SELECTED_GROUP = 0;
 
@@ -71,7 +71,7 @@ public class HomeActivity extends BaseActivity {
         /**
          * appendQueryParameter对具体的会话列表做展示
          */
-        if (mConversationFragment == null) {
+//        if (mConversationFragment == null) {
             ConversationListFragment listFragment = new MyConversationListFragment();
             Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
                     .appendPath("conversationList")
@@ -82,9 +82,9 @@ public class HomeActivity extends BaseActivity {
                     .build();
             listFragment.setUri(uri);
             return listFragment;
-        } else {
-            return mConversationFragment;
-        }
+//        } else {
+//            return mConversationFragment;
+//        }
     }
 
     @Override

@@ -103,6 +103,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/reload-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/shaders" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/split-apk" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/splits-support" />
@@ -114,18 +115,23 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="com.android.support:support-annotations:23.4.0@jar" level="project" />
     <orderEntry type="library" name="com.android.support:multidex-1.0.2" level="project" />
     <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/IMLib/libs/Rong_IMLib.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-v4-23.4.0" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support:multidex-1.0.0" level="project" />
-    <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/IMKit/src/main/libs/Rong_IMKit.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/app/src/main/libs/AMap_2DMap_V2.9.0_20160525.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/CallLib/libs/agora-rtc-sdk.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:support-annotations:23.4.0@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/CallLib/libs/CallEngine_Agora.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/CallLib/libs/Rong_CallLib.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/IMKit/src/main/libs/Rong_IMKit.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/app/src/main/libs/AMap_Search_V3.4.0_20160811.jar:unspecified@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support:multidex-instrumentation-1.0.2" level="project" />
     <orderEntry type="library" name="com.squareup.picasso:picasso:2.5.2@jar" level="project" />
     <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/app/src/main/libs/MiPush_SDK_Client_3_2_2.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="__local_aars__:/Users/qinxue/Downloads/RongCloudDemo/app/src/main/libs/AMap_Channel_Location_V1.4.0_20160708.jar:unspecified@jar" level="project" />
+    <orderEntry type="module" module-name="CallKit" />
+    <orderEntry type="module" module-name="CallLib" />
     <orderEntry type="module" module-name="IMLib" />
     <orderEntry type="module" module-name="IMKit" />
   </component>

@@ -157,7 +157,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
         RongIM.setOnReceiveMessageListener(new RongIMClient.OnReceiveMessageListener() {
             @Override
             public boolean onReceived(Message message, int i) {
-
+                long receiveTime = message.getReceivedTime();
+                long sendTime = message.getSentTime();
+                long intravl = receiveTime - sendTime;
+                Log.i(TAG, "receiveTime = " + receiveTime + " sendTime = " + sendTime + " intravl = " + intravl);
                 Log.i(TAG, "onReceived()");
                 Log.i(TAG, "onReceived() message.getContent().getClass().getSimpleName() =" + message.getContent().getClass().getSimpleName());
                 MessageTag tag = CustomMessage.class.getAnnotation(MessageTag.class);
