@@ -15,7 +15,7 @@ import io.rong.imlib.model.MessageContent;
 /**
  * Created by qinxue on 2017/10/11.
  */
-@MessageTag(value = "app:custom", flag = MessageTag.STATUS)
+@MessageTag(value = "app:custom", flag = MessageTag.ISCOUNTED)
 public class CustomMessage extends MessageContent {
     private static final String TAG = "CustomMessage";
     private String content = "";

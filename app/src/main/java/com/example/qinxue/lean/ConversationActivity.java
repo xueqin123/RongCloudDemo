@@ -216,15 +216,22 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                     case 6:
                         Log.i(TAG, "发送自定义消息");
                         CustomMessage customMessage = new CustomMessage("自定义的消息");
-                        RongIM.getInstance().sendMessage(mConversationType, mCurrentId, customMessage, null, null, new RongIMClient.SendMessageCallback() {
+                        io.rong.imlib.model.Message message1 = io.rong.imlib.model.Message.obtain(mCurrentId, mConversationType, customMessage);
+                        RongIM.getInstance().sendMessage(message1, null, null, new IRongCallback.ISendMessageCallback() {
+
                             @Override
-                            public void onSuccess(Integer integer) {
+                            public void onAttached(Message message) {
+
+                            }
+
+                            @Override
+                            public void onSuccess(Message message) {
                                 Log.i(TAG, "onSuccess()");
                             }
 
                             @Override
-                            public void onError(Integer integer, RongIMClient.ErrorCode errorCode) {
-                                Log.i(TAG, "onError()");
+                            public void onError(Message message, RongIMClient.ErrorCode errorCode) {
+
                             }
                         });
                         break;
@@ -248,9 +255,9 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
 
                         break;
                     case 8:
-                        TextMessage message1 = TextMessage.obtain("extraMessage");
-                        message1.setExtra("this is extra");
-                        RongIM.getInstance().sendMessage(mConversationType, mCurrentId, message1, null, null, new RongIMClient.SendMessageCallback() {
+                        TextMessage extraMessage = TextMessage.obtain("extraMessage");
+                        extraMessage.setExtra("this is extra");
+                        RongIM.getInstance().sendMessage(mConversationType, mCurrentId, extraMessage, null, null, new RongIMClient.SendMessageCallback() {
                             @Override
                             public void onSuccess(Integer integer) {
                                 Log.i(TAG, "onSuccess()");
