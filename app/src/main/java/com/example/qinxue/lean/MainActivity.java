@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,6 +149,20 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
             @Override
             public void onTokenIncorrect() {
                 Log.e(TAG, "token is error ,please check token and appkey");
+            }
+        });
+
+
+        RongIM.getInstance().setSendMessageListener(new RongIM.OnSendMessageListener() {
+            @Override
+            public Message onSend(Message message) {
+                Log.i(TAG,"onSend type = "+message.getObjectName());
+                return message;
+            }
+
+            @Override
+            public boolean onSent(Message message, RongIM.SentMessageErrorCode sentMessageErrorCode) {
+                return false;
             }
         });
 

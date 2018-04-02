@@ -14,7 +14,7 @@
     <integer name="rc_custom_service_evaluation_interval">60</integer>
 
     <!-- 退出客服页面是否关闭客服 -->
-    <bool name="rc_stop_custom_service_when_quit">true</bool>
+    <bool name="rc_stop_custom_service_when_quit">false</bool>
 
     <!-- 默认图片保存路径，在会话界面查看大图，长按时选择保存，会使用这个配置-->
     <string name="rc_image_default_saved_path">/RongCloud/Image/</string>

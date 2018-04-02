@@ -379,7 +379,7 @@
     <bool name="rc_is_show_warning_notification">true</bool>
     <bool name="rc_play_audio_continuous">true</bool>
     <bool name="rc_read_receipt">true</bool>
-    <bool name="rc_stop_custom_service_when_quit">true</bool>
+    <bool name="rc_stop_custom_service_when_quit">false</bool>
     <color name="rc_ad_file_list_no_select_file_text_state">#9fcdfd</color>
     <color name="rc_ad_file_list_select_file_text_state">#ffffff</color>
     <color name="rc_conversation_list_divider_color">#dfdfdd</color>

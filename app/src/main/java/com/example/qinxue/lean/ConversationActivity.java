@@ -217,7 +217,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                         Log.i(TAG, "发送自定义消息");
                         CustomMessage customMessage = new CustomMessage("自定义的消息");
                         io.rong.imlib.model.Message message1 = io.rong.imlib.model.Message.obtain(mCurrentId, mConversationType, customMessage);
-                        RongIM.getInstance().sendMessage(message1, null, null, new IRongCallback.ISendMessageCallback() {
+                        RongIM.getInstance().sendMessage(message1, "自定义PushContent", "自定义pushdata", new IRongCallback.ISendMessageCallback() {
 
                             @Override
                             public void onAttached(Message message) {

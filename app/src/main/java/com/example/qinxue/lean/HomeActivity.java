@@ -34,7 +34,7 @@ public class HomeActivity extends BaseActivity {
     private ViewPager mViewPager;
     private FragmentPagerAdapter mFragmentPagerAdapter;//将tab页面持久在内存中
     private Fragment mConversationList;
-//    private Fragment mConversationFragment = null;
+    //    private Fragment mConversationFragment = null;
     private List<Fragment> mFragments = new ArrayList<>();
     private static final int SELECTED_GROUP = 0;
 
@@ -72,16 +72,16 @@ public class HomeActivity extends BaseActivity {
          * appendQueryParameter对具体的会话列表做展示
          */
 //        if (mConversationFragment == null) {
-            ConversationListFragment listFragment = new MyConversationListFragment();
-            Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
-                    .appendPath("conversationList")
-                    .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "false")//设置私聊会话是否聚合显示
-                    .appendQueryParameter(Conversation.ConversationType.GROUP.getName(), "false")
-                    .appendQueryParameter(Conversation.ConversationType.DISCUSSION.getName(), "false")//设置私聊会话是否聚合显示
-                    .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "false")//设置私聊会是否聚合显示
-                    .build();
-            listFragment.setUri(uri);
-            return listFragment;
+        ConversationListFragment listFragment = new MyConversationListFragment();
+        Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
+                .appendPath("conversationList")
+                .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "false" )//设置私聊会话是否聚合显示
+                .appendQueryParameter(Conversation.ConversationType.GROUP.getName(), "false")
+                .appendQueryParameter(Conversation.ConversationType.DISCUSSION.getName(), "false")//设置私聊会话是否聚合显示
+                .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "false")//设置私聊会是否聚合显示
+                .build();
+        listFragment.setUri(uri);
+        return listFragment;
 //        } else {
 //            return mConversationFragment;
 //        }
@@ -109,6 +109,9 @@ public class HomeActivity extends BaseActivity {
         menu.add(0, 8, 0, "disconnected");
         menu.add(0, 9, 0, "切换账户到2");
         menu.add(0, 10, 0, "测试Java代理");
+        menu.add(0, 11, 0, "测试GridView");
+        menu.add(0, 12, 0, "测试多线程");
+        menu.add(0, 13, 0, "测试dp转换");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -135,7 +138,7 @@ public class HomeActivity extends BaseActivity {
                         break;
                     case 5:
                         CSCustomServiceInfo.Builder csBuilder = new CSCustomServiceInfo.Builder();
-                        CSCustomServiceInfo csInfo = csBuilder.nickName("客服").build();
+                        CSCustomServiceInfo csInfo = csBuilder.nickName("客服").mobileNo("18810979324").build();
                         RongIM.getInstance().startCustomerServiceChat(HomeActivity.this, "KEFU150537350421542", "在线客服", csInfo);
                         break;
                     case 6:
@@ -185,6 +188,15 @@ public class HomeActivity extends BaseActivity {
                     case 10:
                         testProxy();
                         break;
+                    case 11:
+                        Intent intent1 = new Intent(HomeActivity.this, GridViewActivity.class);
+                        startActivity(intent1);
+                    case 12:
+                        Intent intent2 = new Intent(HomeActivity.this, DownLoadTestActivity.class);
+                        startActivity(intent2);
+                    case 13:
+                        DensityUtil.dip2px(HomeActivity.this, 90);
+                        break;
                     default:
                         break;
                 }
@@ -192,7 +204,6 @@ public class HomeActivity extends BaseActivity {
             }
         });
     }
-
 
     private void testProxy() {
         ProxyTest.RealSubject real = new ProxyTest.RealSubject(); //

@@ -30,9 +30,10 @@ public class MyConversationFragment extends ConversationFragment {
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
         mRongExtension = (RongExtension) v.findViewById(io.rong.imkit.R.id.rc_extension);
+        mRongExtension.getInputEditText();
 //        ImageView emoticon = (ImageView) mRongExtension.findViewById(R.id.rc_emoticon_toggle);
 //        emoticon.setVisibility(View.GONE);
-
+        ListView listView = new ListView(getActivity());
 
 //        mTextView = mRongExtension.getInputEditText();
 //        mTextView.setHint("请输入");
@@ -48,6 +49,7 @@ public class MyConversationFragment extends ConversationFragment {
         return v;
 
     }
+
 
     @Override
     public void onResume() {

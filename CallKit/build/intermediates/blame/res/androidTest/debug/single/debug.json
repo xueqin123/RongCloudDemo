@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_origin_check_sel.png.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_origin_check_sel.png"
-    },
-    {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_ic_bubble_no_left.9.png.flat",
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_bubble_no_left.9.png"
+    },
+    {
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_origin_check_sel.png.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_origin_check_sel.png"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_u270b.png.flat",
@@ -28,16 +28,16 @@
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_warning.png"
     },
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_u1f62e.png.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f62e.png"
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_default_portrait.png.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_default_portrait.png"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable_rc_unread_msg_bg_style.xml.flat",
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable/rc_unread_msg_bg_style.xml"
     },
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_default_portrait.png.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_default_portrait.png"
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_u1f62e.png.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f62e.png"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_u26c4.png.flat",
@@ -168,28 +168,28 @@
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f389.png"
     },
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_voip_mute_hover.png.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_voip_mute_hover.png"
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_cs_delete.png.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_cs_delete.png"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_loading.png.flat",
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_loading.png"
     },
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_cs_delete.png.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_cs_delete.png"
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_voip_mute_hover.png.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_voip_mute_hover.png"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_ic_phone_pressed.png.flat",
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_phone_pressed.png"
     },
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_u1f628.png.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f628.png"
-    },
-    {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_conversation_list_msg_send_failure.png.flat",
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_conversation_list_msg_send_failure.png"
+    },
+    {
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_u1f628.png.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f628.png"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_voip_audio_right_connected.png.flat",
@@ -228,12 +228,12 @@
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u2614.png"
     },
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_bg_toast.9.png.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_bg_toast.9.png"
-    },
-    {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/layout_rc_voip_item_outgoing_maudio.xml.flat",
         "source": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/bundles/debug/res/layout/rc_voip_item_outgoing_maudio.xml"
+    },
+    {
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_bg_toast.9.png.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_bg_toast.9.png"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_read_receipt_request_hover.png.flat",
@@ -348,12 +348,12 @@
         "source": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/bundles/debug/res/layout/rc_voip_ac_muti_audio.xml"
     },
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_cs_group_ok_pressed.png.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_cs_group_ok_pressed.png"
-    },
-    {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_u1f48b.png.flat",
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f48b.png"
+    },
+    {
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_cs_group_ok_pressed.png.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_cs_group_ok_pressed.png"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/layout_rc_voip_float_box.xml.flat",
@@ -368,12 +368,12 @@
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_edit_text_background.9.png"
     },
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable_rc_voip_mute_selector.xml.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/bundles/debug/res/drawable/rc_voip_mute_selector.xml"
-    },
-    {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_u1f3c0.png.flat",
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f3c0.png"
+    },
+    {
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable_rc_voip_mute_selector.xml.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/bundles/debug/res/drawable/rc_voip_mute_selector.xml"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable_rc_corner_style.xml.flat",
@@ -428,12 +428,12 @@
         "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_mebmer_delete.png"
     },
     {
-        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_rt_loc_other.png.flat",
-        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_rt_loc_other.png"
-    },
-    {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable_rc_ic_video_selector.xml.flat",
         "source": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/bundles/debug/res/drawable/rc_ic_video_selector.xml"
+    },
+    {
+        "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_rc_rt_loc_other.png.flat",
+        "source": "/Users/qinxue/Downloads/RongCloudDemo/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_rt_loc_other.png"
     },
     {
         "merged": "/Users/qinxue/Downloads/RongCloudDemo/CallKit/build/intermediates/res/merged/androidTest/debug/layout_rc_conversation_notification_container.xml.flat",
