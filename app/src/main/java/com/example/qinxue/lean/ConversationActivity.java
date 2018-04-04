@@ -215,7 +215,8 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                         break;
                     case 6:
                         Log.i(TAG, "发送自定义消息");
-                        CustomMessage customMessage = new CustomMessage("自定义的消息");
+                        User user = new User("icon", "id", "name");
+                        CustomMessage customMessage = new CustomMessage("自定义的消息", user);
                         io.rong.imlib.model.Message message1 = io.rong.imlib.model.Message.obtain(mCurrentId, mConversationType, customMessage);
                         RongIM.getInstance().sendMessage(message1, "自定义PushContent", "自定义pushdata", new IRongCallback.ISendMessageCallback() {
 
@@ -394,19 +395,24 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        String newName = mEditText.getText().toString();
-        if (!TextUtils.isEmpty(newName)) {
-            int index = 0;
-            for (int i = 0; i < MainActivity.nickNameList.size(); i++) {
-                if (MainActivity.nickNameList.get(i).getUserId().equals("2")) {
-                    index = i;
-                }
-            }
-            MainActivity.nickNameList.remove(index);
-            GroupUserInfo newGroupInfo = new GroupUserInfo("group1", "2", newName);
-            MainActivity.nickNameList.add(newGroupInfo);
-            RongIM.getInstance().refreshGroupUserInfoCache(newGroupInfo);
+        switch (v.getId()) {
+            case R.id.rename:
+                String newName = mEditText.getText().toString();
+                if (!TextUtils.isEmpty(newName)) {
+                    int index = 0;
+                    for (int i = 0; i < MainActivity.nickNameList.size(); i++) {
+                        if (MainActivity.nickNameList.get(i).getUserId().equals("2")) {
+                            index = i;
+                        }
+                    }
+                    MainActivity.nickNameList.remove(index);
+                    GroupUserInfo newGroupInfo = new GroupUserInfo("group1", "2", newName);
+                    MainActivity.nickNameList.add(newGroupInfo);
+                    RongIM.getInstance().refreshGroupUserInfoCache(newGroupInfo);
 
+                }
+                break;
         }
+
     }
 }

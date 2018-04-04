@@ -19,17 +19,30 @@ import io.rong.imlib.model.MessageContent;
 public class CustomMessage extends MessageContent {
     private static final String TAG = "CustomMessage";
     private String content = "";
+    private User user;
 
-    public CustomMessage(String content) {
+    public CustomMessage(String content, User user) {
+        Log.i(TAG, "CustomMessage() user = " + user);
         this.content = content;
+        this.user = user;
     }
+
 
     public CustomMessage(Parcel in) {
         this.content = in.readString();
+        this.user = in.readParcelable(User.class.getClassLoader());
     }
 
     public String getString() {
         return content;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser(User user) {
+        return user;
     }
 
     public CustomMessage(byte[] data) {
@@ -46,7 +59,8 @@ public class CustomMessage extends MessageContent {
 
             if (jsonObj.has("content"))
                 content = jsonObj.optString("content");
-
+            JSONObject jsonObjUser = (JSONObject) jsonObj.get("user");
+            user = new User(jsonObjUser);
         } catch (JSONException e) {
             Log.i(TAG, "e = " + e.getMessage());
         }
@@ -56,9 +70,10 @@ public class CustomMessage extends MessageContent {
     @Override
     public byte[] encode() {
         JSONObject jsonObj = new JSONObject();
-
         try {
             jsonObj.put("content", content);
+            Log.i(TAG, "encode() user = " + user);
+            jsonObj.put("user", user.getJsonObject());
         } catch (JSONException e) {
             Log.e("JSONException", e.getMessage());
         }
@@ -71,6 +86,7 @@ public class CustomMessage extends MessageContent {
         return null;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -79,6 +95,7 @@ public class CustomMessage extends MessageContent {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(content);
+        dest.writeParcelable(user, flags);
     }
 
     public static final Parcelable.Creator<CustomMessage> CREATOR = new Creator<CustomMessage>() {
@@ -95,4 +112,8 @@ public class CustomMessage extends MessageContent {
     };
 
 
+    @Override
+    public String toString() {
+        return "content: " + content + " user: " + user.toString();
+    }
 }

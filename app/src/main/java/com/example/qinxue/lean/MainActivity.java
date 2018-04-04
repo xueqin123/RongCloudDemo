@@ -156,7 +156,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
         RongIM.getInstance().setSendMessageListener(new RongIM.OnSendMessageListener() {
             @Override
             public Message onSend(Message message) {
-                Log.i(TAG,"onSend type = "+message.getObjectName());
+                Log.i(TAG, "onSend type = " + message.getObjectName());
                 return message;
             }
 
@@ -187,7 +187,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(MainActivity.this.getApplicationContext(), msg.getString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this.getApplicationContext(), msg.toString(), Toast.LENGTH_LONG).show();
                         }
                     });
 

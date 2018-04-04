@@ -32,6 +32,7 @@ public class LeanApplication extends MultiDexApplication {
         RongIM.registerMessageType(CustomMessage.class);
         RongIM.registerMessageType(VideoMessage.class);
         RongIM.registerMessageTemplate(new CustomMessageItemProvider());
+//        RongIM.getInstance().setSendMessageListener(new MySendMessageListener());
 //        removeFilePlugin();
     }
 
