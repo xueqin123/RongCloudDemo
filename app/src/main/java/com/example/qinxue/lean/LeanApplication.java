@@ -28,7 +28,7 @@ public class LeanApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         RongIM.init(this, APP_KEY);
-//        RongIM.getInstance().registerConversationTemplate(new MyConversationProvider());
+        RongIM.getInstance().registerConversationTemplate(new MyConversationProvider());
         RongIM.registerMessageType(CustomMessage.class);
         RongIM.registerMessageType(VideoMessage.class);
         RongIM.registerMessageTemplate(new CustomMessageItemProvider());

@@ -38,6 +38,7 @@ import io.rong.imlib.IRongCallback;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.TypingMessage.TypingStatus;
 import io.rong.imlib.model.Conversation;
+import io.rong.imlib.model.Conversation.ConversationNotificationStatus;
 import io.rong.imlib.model.Discussion;
 import io.rong.imlib.model.Message;
 import io.rong.imlib.model.MessageContent;
@@ -170,6 +171,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         menu.add(0, 8, 0, "发送外信息");
         menu.add(0, 9, 0, "发送媒体消息");
         menu.add(0, 10, 0, "获取最近消息");
+        menu.add(0, 11, 0, "改变群组消息免打扰");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -327,12 +329,45 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                             }
                         });
                         break;
+                    case 11:
+                        RongIM.getInstance().getConversationNotificationStatus(mConversationType, mCurrentId,
+                                new RongIMClient.ResultCallback<ConversationNotificationStatus>() {
+                                    @Override
+                                    public void onSuccess(ConversationNotificationStatus conversationNotificationStatus) {
+                                        if (conversationNotificationStatus == ConversationNotificationStatus.DO_NOT_DISTURB) {
+                                            setNotifyDistube(ConversationNotificationStatus.NOTIFY);
+                                        } else if (conversationNotificationStatus == ConversationNotificationStatus.NOTIFY) {
+                                            setNotifyDistube(ConversationNotificationStatus.DO_NOT_DISTURB);
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onError(RongIMClient.ErrorCode errorCode) {
+
+                                    }
+                                });
+                        break;
                     default:
                         break;
                 }
 //                }
 
                 return false;
+            }
+        });
+    }
+
+    private void setNotifyDistube(ConversationNotificationStatus status) {
+        RongIM.getInstance().setConversationNotificationStatus(mConversationType, mCurrentId, status, new RongIMClient.ResultCallback<ConversationNotificationStatus>() {
+            @Override
+            public void onSuccess(ConversationNotificationStatus conversationNotificationStatus) {
+                Toast.makeText(ConversationActivity.this, "current status:" + conversationNotificationStatus, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+
             }
         });
     }
