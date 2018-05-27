@@ -28,6 +28,7 @@ public class LeanApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         RongIM.init(this, APP_KEY);
+//        RongIM.getInstance().setMessageAttachedUserInfo(true); //使用消息携带用户信息需要取消掉注释掉这里
         RongIM.getInstance().registerConversationTemplate(new MyConversationProvider());
         RongIM.registerMessageType(CustomMessage.class);
         RongIM.registerMessageType(VideoMessage.class);

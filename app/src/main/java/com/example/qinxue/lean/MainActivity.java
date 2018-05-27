@@ -136,6 +136,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
             @Override
             public void onSuccess(String userId) {
                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                RongIM.getInstance().setCurrentUserInfo(getUserInfo(userId));
+
                 Toast.makeText(MainActivity.this, "connect server success", Toast.LENGTH_SHORT).show();
                 CURRENT_USER = userId;
             }
@@ -230,7 +232,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
 
             @Override
             public boolean onMessageClick(Context context, View view, Message message) {
-                Log.i(TAG, "onMessageClick()");
+                Log.i(TAG, "onMessageClick()" + message.getContent().getUserInfo());
                 return false;
             }
 
@@ -322,7 +324,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
         userIdList.add(new Friend("5", "user5", "http://img.duoziwang.com/2016/11/27/133942164161.jpg"));
         userIdList.add(new Friend("200016", "user200016", "http://img.duoziwang.com/2016/11/27/133942164161.jpg"));
         userIdList.add(new Friend("200017", "user200017", "http://img.duoziwang.com/2016/11/27/133942164161.jpg"));
-        RongIM.setUserInfoProvider(this, true);
+        RongIM.setUserInfoProvider(this, true);//使用消息携带用户信息需要注释掉这里
         for (Friend i : userIdList) {
             nickNameList.add(new GroupUserInfo("group1", i.getUserId(), i.getName()));
         }
