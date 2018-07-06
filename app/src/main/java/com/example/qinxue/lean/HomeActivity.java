@@ -3,6 +3,7 @@ package com.example.qinxue.lean;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -24,6 +25,7 @@ import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.CSCustomServiceInfo;
 import io.rong.imlib.model.Conversation;
+import io.rong.message.InformationNotificationMessage;
 
 /**
  * Created by qinxue on 2017/8/30.
@@ -112,6 +114,7 @@ public class HomeActivity extends BaseActivity {
         menu.add(0, 11, 0, "测试GridView");
         menu.add(0, 12, 0, "测试多线程");
         menu.add(0, 13, 0, "测试dp转换");
+
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -191,9 +194,11 @@ public class HomeActivity extends BaseActivity {
                     case 11:
                         Intent intent1 = new Intent(HomeActivity.this, GridViewActivity.class);
                         startActivity(intent1);
+                        break;
                     case 12:
                         Intent intent2 = new Intent(HomeActivity.this, DownLoadTestActivity.class);
                         startActivity(intent2);
+                        break;
                     case 13:
                         DensityUtil.dip2px(HomeActivity.this, 90);
                         break;
@@ -205,9 +210,11 @@ public class HomeActivity extends BaseActivity {
         });
     }
 
+
     private void testProxy() {
-        ProxyTest.RealSubject real = new ProxyTest.RealSubject(); //
-        //参数 （类加载器，type，invokhandler接口)
+        ProxyTest.RealSubject real = new ProxyTest.RealSubject(); //实例化对象
+        //参数 （接口类加载器，类type，invokhandler接口)
+        //返回值为接口实例
         ProxyTest.Subject proxySubject = (ProxyTest.Subject) Proxy.newProxyInstance(ProxyTest.Subject.class.getClassLoader(),
                 new Class[]{ProxyTest.Subject.class},
                 new ProxyTest.ProxyHandler(real));

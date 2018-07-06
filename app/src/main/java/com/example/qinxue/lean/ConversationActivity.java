@@ -44,6 +44,7 @@ import io.rong.imlib.model.Message;
 import io.rong.imlib.model.MessageContent;
 import io.rong.imlib.model.UserInfo;
 import io.rong.message.FileMessage;
+import io.rong.message.InformationNotificationMessage;
 import io.rong.message.TextMessage;
 
 public class ConversationActivity extends BaseActivity implements View.OnClickListener {
@@ -172,6 +173,7 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
         menu.add(0, 9, 0, "发送媒体消息");
         menu.add(0, 10, 0, "获取最近消息");
         menu.add(0, 11, 0, "改变群组消息免打扰");
+        menu.add(0, 12, 0, "测试infoNtf");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -260,17 +262,33 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
                     case 8:
                         TextMessage extraMessage = TextMessage.obtain("extraMessage");
                         extraMessage.setExtra("this is extra");
-                        RongIM.getInstance().sendMessage(mConversationType, mCurrentId, extraMessage, null, null, new RongIMClient.SendMessageCallback() {
+                        Message messageExtra = Message.obtain(mCurrentId, mConversationType, extraMessage);
+                        messageExtra.setExtra("this is Message extra");
+
+//                        RongIM.getInstance().sendMessage(mConversationType, mCurrentId, extraMessage, null, null, new RongIMClient.SendMessageCallback() {
+//                            @Override
+//                            public void onSuccess(Integer integer) {
+//                                Log.i(TAG, "onSuccess()");
+//                            }
+//
+//                            @Override
+//                            public void onError(Integer integer, RongIMClient.ErrorCode errorCode) {
+//                                Log.i(TAG, "onError()");
+//                            }
+//                        });
+
+                        RongIM.getInstance().sendMessage(messageExtra, "", "", new RongIMClient.SendMessageCallback() {
                             @Override
-                            public void onSuccess(Integer integer) {
-                                Log.i(TAG, "onSuccess()");
+                            public void onError(Integer integer, RongIMClient.ErrorCode errorCode) {
+
                             }
 
                             @Override
-                            public void onError(Integer integer, RongIMClient.ErrorCode errorCode) {
-                                Log.i(TAG, "onError()");
+                            public void onSuccess(Integer integer) {
+
                             }
                         });
+
                         break;
 
                     case 9:
@@ -347,6 +365,21 @@ public class ConversationActivity extends BaseActivity implements View.OnClickLi
 
                                     }
                                 });
+                        break;
+                    case 12:
+                        InformationNotificationMessage informationNotificationMessage = InformationNotificationMessage.obtain("infoMessage");
+                        Message message2 = Message.obtain(mCurrentId, mConversationType, informationNotificationMessage);
+                        RongIM.getInstance().sendMessage(message2, "", "", new RongIMClient.SendMessageCallback() {
+                            @Override
+                            public void onError(Integer integer, RongIMClient.ErrorCode errorCode) {
+
+                            }
+
+                            @Override
+                            public void onSuccess(Integer integer) {
+
+                            }
+                        });
                         break;
                     default:
                         break;

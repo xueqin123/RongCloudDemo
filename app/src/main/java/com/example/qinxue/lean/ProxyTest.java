@@ -31,7 +31,10 @@ public class ProxyTest {
             //在转调具体目标对象之前，可以执行一些功能处理
 
             //转调具体目标对象的方法
-            return method.invoke(proxied, args);
+            Log.i("qinxue", "动态代理执行前");
+            Object result = method.invoke(proxied, args);
+            Log.i("qinxue", "动态代理执行后");
+            return result;
 
             //在转调具体目标对象之后，可以执行一些功能处理
         }

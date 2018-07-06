@@ -175,6 +175,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
                 long receiveTime = message.getReceivedTime();
                 long sendTime = message.getSentTime();
                 long intravl = receiveTime - sendTime;
+                Log.i(TAG, "message.getExtra() = " + message.getExtra());
                 Log.i(TAG, "receiveTime = " + receiveTime + " sendTime = " + sendTime + " intravl = " + intravl);
                 Log.i(TAG, "onReceived()");
                 Log.i(TAG, "onReceived() message.getContent().getClass().getSimpleName() =" + message.getContent().getClass().getSimpleName());
@@ -186,18 +187,14 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
                     Log.i(TAG, "CustomMessage receive");
                     final CustomMessage msg = (CustomMessage) message.getContent();
                     Log.i(TAG, "msg = " + msg.getString());
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(MainActivity.this.getApplicationContext(), msg.toString(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+//                    showToast(msg);
 
                 } else if (message.getObjectName().equals(tag1.value())) {
                     Log.i(TAG, "Textmessaget receive");
 
                     TextMessage message1 = (TextMessage) message.getContent();
                     Log.i(TAG, "message1.getExtra()) = " + message1.getExtra());
+                    showToast(message1.getExtra());
                 }
 
 
@@ -213,6 +210,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
                 return false;
             }
         });
+
 
         //设置消息点击监听
         RongIM.getInstance().setConversationBehaviorListener(new RongIM.ConversationBehaviorListener() {
@@ -313,6 +311,15 @@ public class MainActivity extends Activity implements View.OnClickListener, Rong
         RongIM.getInstance().setGroupInfoProvider(this, true);
 
 
+    }
+
+    private void showToast(final String message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this.getApplicationContext(), message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void initUserInfo() {
